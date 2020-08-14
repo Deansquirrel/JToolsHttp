@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.Map;
 
 public interface IHttpCli {
-	
 	/**
 	 * get 请求
 	 * @param url 请求地址
@@ -63,8 +62,7 @@ public interface IHttpCli {
 	
 	/**
 	 * post 请求
-	 * @param url
-	 * @param headers
+	 * @param url 请求地址
 	 * @param json
 	 * @return
 	 * @throws Exception
@@ -98,6 +96,4 @@ public interface IHttpCli {
 	public String doPostMulti(String url, String[] headers, Map<String, File> data) throws Exception;
 	
 	public String doPostMulti(String url, Map<String, String> params, Map<String, File> data) throws Exception;
-	
-
 }

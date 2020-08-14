@@ -3,6 +3,8 @@ package com.yuansong.tools.okhttp;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +24,7 @@ import okhttp3.OkHttpClient;
 
 @Configuration 
 public class OkHttpConfiguration {
-	
+
 	@Bean
 	public Map<String, List<Cookie>> getCookieStore() {
 		return new HashMap<String, List<Cookie>>();
@@ -39,20 +41,20 @@ public class OkHttpConfiguration {
 				.writeTimeout(30, TimeUnit.SECONDS)
 				.hostnameVerifier((hostname, seesion) -> true)
 //				.cookieJar(new CookieJar() {
-//				@Override
-//				public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
-//					getCookieStore().put(url.host(), cookies);
-//				}
-//				@Override
-//				public List<Cookie> loadForRequest(HttpUrl url) {
-//					List<Cookie> cookies = getCookieStore().get(url.host());
-//		            return cookies != null ? cookies : new ArrayList<Cookie>();
-//				}
-//			})
-//			设置代理
-//			.proxy(proxy)
-//			拦截器
-//			.addInterceptor(interceptor)
+//					@Override
+//					public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
+//						getCookieStore().put(url.host(), cookies);
+//					}
+//					@Override
+//					public List<Cookie> loadForRequest(HttpUrl url) {
+//						List<Cookie> cookies = getCookieStore().get(url.host());
+//			            return cookies != null ? cookies : new ArrayList<Cookie>();
+//					}
+//				})
+//				设置代理
+//				.proxy(proxy)
+//				拦截器
+//				.addInterceptor(interceptor)
 				.build();
 	}
 	
@@ -61,19 +63,20 @@ public class OkHttpConfiguration {
 		return new X509TrustManager() {
 
 			@Override
-			public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType)
-					throws java.security.cert.CertificateException {
+			public void checkClientTrusted(X509Certificate[] chain, String authType) 
+					throws CertificateException {
 				
 			}
 
 			@Override
-			public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType)
-					throws java.security.cert.CertificateException {
+			public void checkServerTrusted(X509Certificate[] chain, String authType) 
+					throws CertificateException {
+				
 			}
 
 			@Override
-			public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-				return null;
+			public X509Certificate[] getAcceptedIssuers() {
+				return new X509Certificate[0];
 			}
 			
 		};
@@ -95,5 +98,5 @@ public class OkHttpConfiguration {
 	public ConnectionPool pool() {
 		return new ConnectionPool(5, 5, TimeUnit.MINUTES);
 	}
-
+	
 }
