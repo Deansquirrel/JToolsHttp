@@ -48,6 +48,7 @@ public class HttpCliImpl implements IHttpCli {
 		url = url + this.getHeadersStr(params);
 
 		Request.Builder builder = new Request.Builder();
+		builder.addHeader("Connection", "close");
 		if(headers != null && headers.length > 0) {
 			if(headers.length % 2 == 0) {
 				for(int i = 0; i < headers.length; i = i + 2) {
@@ -72,6 +73,7 @@ public class HttpCliImpl implements IHttpCli {
 		}
 		Request request = new Request.Builder()
 				.url(url)
+				.addHeader("Connection", "close")
 				.post(builder.build())
 				.build();
 		return this.execute(request);
@@ -131,6 +133,7 @@ public class HttpCliImpl implements IHttpCli {
 		url = url + this.getHeadersStr(params);
 		
 		Request.Builder builder = new Request.Builder();
+		builder.addHeader("Connection", "close");
 		if(headers != null && headers.length > 0) {
 			if(headers.length % 2 == 0) {
 				for(int i = 0; i < headers.length; i = i + 2) {
@@ -180,6 +183,7 @@ public class HttpCliImpl implements IHttpCli {
 		RequestBody requestBody = RequestBody.create(contentType, data);
 		
 		Builder builder = new Request.Builder();
+		builder.addHeader("Connection", "close");
 		if(headers != null && headers.length > 0) {
 			if(headers.length % 2 == 0) {
 				for(int i = 0; i < headers.length; i = i + 2) {
