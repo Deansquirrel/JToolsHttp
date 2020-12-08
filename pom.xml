@@ -3,12 +3,12 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.3.2.RELEASE</version>
+    <version>2.3.6.RELEASE</version>
   </parent>
   <groupId>com.yuansong.tools</groupId>
   <artifactId>tools-http</artifactId>
-  <!--<version>0.0.1</version>-->
-   <version>0.0.0</version> 
+  <version>0.0.2</version>
+  <!-- <version>0.0.0</version>--> 
   <name>tools-http</name>
   <description>Tools Http</description>
   
