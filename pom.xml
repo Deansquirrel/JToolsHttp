@@ -4,8 +4,8 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.yuansong.tools</groupId>
   <artifactId>tools-http</artifactId>
-  <version>0.0.5</version>
-  <!-- <version>0.0.0</version> -->
+  <!-- <version>0.0.5</version> -->
+  <version>0.0.0</version>
   <name>tools-http</name>
   <description>Tools Http</description>
 
