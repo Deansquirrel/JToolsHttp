@@ -22,8 +22,8 @@ import okhttp3.ConnectionPool;
 import okhttp3.Cookie;
 import okhttp3.OkHttpClient;
 
-@Configuration 
-public class OkHttpConfiguration {
+@Configuration
+class OkHttpConfiguration {
 
 	@Bean
 	public Map<String, List<Cookie>> getCookieStore() {
@@ -56,8 +56,7 @@ public class OkHttpConfiguration {
 //				拦截器
 //				.addInterceptor(interceptor)
 				.build();
-	}
-	
+		}
 	@Bean
 	public X509TrustManager x509TrustManager() {
 		return new X509TrustManager() {
@@ -96,8 +95,7 @@ public class OkHttpConfiguration {
 	
 	@Bean
 	public ConnectionPool pool() {
-//		return new ConnectionPool(5, 5, TimeUnit.MINUTES);
-		return new ConnectionPool(5, 3, TimeUnit.SECONDS);
+		return new ConnectionPool(5, 5, TimeUnit.MINUTES);
+//		return new ConnectionPool(5, 3, TimeUnit.SECONDS);
 	}
-	
 }
